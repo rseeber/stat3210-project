@@ -1,4 +1,4 @@
+__pycache__/
 output.txt
 
-experiments/inputs/*
-experiments/outputs/*
+experiments/
