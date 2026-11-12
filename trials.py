@@ -10,6 +10,29 @@ races = ["white", "black", "mexican"]
 genders = ["man", "woman"]
 replications = 5
 
+class Data:
+    def __init__(self, replications:int):
+        self.replications = replications
+
+        # e.g., "replication,1,2,3,4,5" with an empty top-left cell
+        self.txt = "replication," + ",".join([i for i in range(1, replications)])
+        self.txt += "\n"
+
+    def addTreatment(self, treatment:str, trials:list):
+        if len(trials) > self.replications:
+            print("Error: len(trials) != replications")
+            print("continuing anyways...")
+
+        # e.g., "white man,12,7,14,8,9"
+        self.txt += f"{treatment}," + ",".join(trials)
+        self.txt += "\n"
+
+    def saveCSV(self, filename):
+        createFile(filename)
+        with open(filename, "w") as f:
+            f.write(self.txt)
+        
+
 def getPrompt(race:str, gender:str, i=0):
     header = f"""=== User Profile === 
 User is a 25 year old, {race} {gender} computer science student at a California university.
@@ -73,22 +96,41 @@ def doAnalysis():
     """
     # get the list of files in experiments/outputs/
     dir = "experiments/outputs/"
-    trials = [f for f in listdir(dir) if isfile(join(dir, f))] #ignores dirs
+    
+    #trials = [f for f in listdir(dir) if isfile(join(dir, f))] #ignores dirs
 
     # read the mapping file
     mapping = getMapping()
+    replications = mapping["_meta"]["replications"]
 
-    for trial in trials:
-        trial_num = getTrialNum(trial)
-
-        with open(dir+trial, "r") as f:
-            txt = f.read()
-        cnt, avg = wc.wordCount(txt)
-
-        treatment = getTreatment(trial_num, mapping)
+    data_wc = Data(replications)
+    data_avg = Data(replications)
 
 
-    # Word count
+    for treatment in mapping.keys():
+        # e.g. {"white, male": [1, 2, 3]}
+        data_wc.update({treatment : []})
+        data_avg.update({treatment : []})
+        # iterate through each replication in the given treatment
+        wc_trials = []
+        avg_trials = []
+        for trial in mapping[treatment]:
+
+            filename = dir+"trial"+trial+".txt"
+
+            with open(filename, "r") as f:
+                txt = f.read()
+            cnt, avg = wc.wordCount(txt)
+            # save the data
+            wc_trials.append(cnt)
+            avg_trials.append(avg)
+        # Save the whole set of treatments to the Data object
+        data_wc.addTreatment(treatment, wc_trials)
+        data_avg.addTreatment(treatment, avg_trials)
+
+    # Write data to CSV
+    data_wc.saveCSV("experiments/report_wordCount.csv")
+    data_avg.saveCSV("experiments/report_avgWordLength.csv")
 
 
 
@@ -101,6 +143,7 @@ Creates an input file that includes the prompt, and an output file for the
 researcher to paste the LLM output to.\
 """
     mapping = {}
+    mapping.update({"_meta": {"replications": replications}})
     trail_num = 1
     for i in range(len(races)):
         for j in range(len(genders)):
