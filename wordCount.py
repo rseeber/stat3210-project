@@ -4,13 +4,11 @@ def wordCount(text:str):
     Returns the number of words and average length of words in a text
     """
     words = text.split()
-    print(words)
     avg = 0
 
     wc = len(words)
     #find avg
     totalChars = sum(len(count) for count in words) 
-    print(totalChars)
     try:
         avg = totalChars / wc
     # Prevents errors if there's an empty file with wc == 0
