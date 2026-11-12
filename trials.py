@@ -1,7 +1,5 @@
 #!/bin/env python3
 import subprocess, sys, json
-from os import listdir
-from os.path import isfile, join
 import re
 
 import wordCount as wc
@@ -15,7 +13,7 @@ class Data:
         self.replications = replications
 
         # e.g., "replication,1,2,3,4,5" with an empty top-left cell
-        self.txt = "replication," + ",".join([i for i in range(1, replications)])
+        self.txt = "replication," + ",".join([str(i) for i in range(1, replications)])
         self.txt += "\n"
 
     def addTreatment(self, treatment:str, trials:list):
@@ -24,7 +22,7 @@ class Data:
             print("continuing anyways...")
 
         # e.g., "white man,12,7,14,8,9"
-        self.txt += f"{treatment}," + ",".join(trials)
+        self.txt += f"{treatment}," + ",".join([str(t) for t in trials])
         self.txt += "\n"
 
     def saveCSV(self, filename):
@@ -108,15 +106,14 @@ def doAnalysis():
 
 
     for treatment in mapping.keys():
-        # e.g. {"white, male": [1, 2, 3]}
-        data_wc.update({treatment : []})
-        data_avg.update({treatment : []})
+        if treatment == "_meta":
+            continue
         # iterate through each replication in the given treatment
         wc_trials = []
         avg_trials = []
         for trial in mapping[treatment]:
 
-            filename = dir+"trial"+trial+".txt"
+            filename = dir+"trial"+str(trial)+".txt"
 
             with open(filename, "r") as f:
                 txt = f.read()
@@ -147,7 +144,7 @@ researcher to paste the LLM output to.\
     trail_num = 1
     for i in range(len(races)):
         for j in range(len(genders)):
-            treatment = f"{races[i]}, {genders[j]}"
+            treatment = f"{races[i]} {genders[j]}"
             mapping.update({treatment : []})
             # Perform each replication on the given treatment
             for k in range(replications):

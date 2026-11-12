@@ -11,7 +11,11 @@ def wordCount(text:str):
     #find avg
     totalChars = sum(len(count) for count in words) 
     print(totalChars)
-    avg = totalChars / wc
+    try:
+        avg = totalChars / wc
+    # Prevents errors if there's an empty file with wc == 0
+    except ZeroDivisionError:
+        avg = None
 
     return len(words), avg 
 
