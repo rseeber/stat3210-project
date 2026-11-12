@@ -1,9 +1,23 @@
 
-def wordCount(text):
+def wordCount(text:str):
+    """
+    Returns the number of words and average length of words in a text
+    """
     words = text.split()
     print(words)
+    avg = 0
 
-    return len(words)
+    wc = len(words)
+    #find avg
+    totalChars = sum(len(count) for count in words) 
+    print(totalChars)
+    avg = totalChars / wc
+
+    return len(words), avg 
+
+
+
+    
 
 def getStrippedText(filename):
     with open(filename, "r") as f:
