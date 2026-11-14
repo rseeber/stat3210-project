@@ -1,6 +1,7 @@
 #!/bin/env python3
+
 import subprocess, sys, json
-import re
+import random
 
 import wordCount as wc
 
@@ -13,7 +14,7 @@ class Data:
         self.replications = replications
 
         # e.g., "replication,1,2,3,4,5" with an empty top-left cell
-        self.txt = "replication," + ",".join([str(i) for i in range(1, replications)])
+        self.txt = "replication," + ",".join([str(i+1) for i in range(replications)])
         self.txt += "\n"
 
     def addTreatment(self, treatment:str, trials:list):
@@ -42,6 +43,57 @@ def main():
         setupTrials()
     elif sys.argv[1] == "analyze":
         doAnalysis()
+    elif sys.argv[1] == "assign":
+        assignTrials()
+
+def assignTrials():
+    """
+    Creates a `trial_order.txt` file that tells us which order to conduct
+    the experiments in, to prevent bias from the order in which we send prompts.
+    """
+    mapping = getMapping()
+    # read the mapping file
+    mapping = getMapping()
+    replications = mapping["_meta"]["replications"]
+
+    key_cnt = len([i for i in mapping.keys() if not i.startswith("_")])
+    trial_cnt = replications * key_cnt
+
+    # We refer to our experimenters as being part of different "groups"
+    # ('group' is an easier word to type)
+    group_cnt = 2   # how many experimenters are there?
+    groups: list[list[int]] = [list() for _ in range(group_cnt)]
+    trials = [i+1 for i in range(trial_cnt)]
+
+    i = 0
+    # this is like a for loop that starts back at zero when it finishes
+    while 1:
+        # break when empty
+        if len(trials) == 0:
+            break
+        # remove a random element from our trials
+        tmp = random.choice(trials)
+        trials.remove(tmp)
+        # give it to the current experimenter
+        groups[i].append(tmp)
+
+        # increment i, starting over if we hit the top
+        i += 1
+        i %= len(groups)
+
+    # Now that we have our groupings, just write it as text
+    txt = ""
+    for i in range(len(groups)):
+        txt += f"=== Experimenter {i+1} ===\n\n"
+        for j in groups[i]:
+            txt += f"{j}\n"
+        txt += "\n"
+    # Save the file
+    createFile("experiments/trial_order.txt")
+    with open("experiments/trial_order.txt", "w") as f:
+        f.write(txt)
+    
+
 
 def doAnalysis():
     """\
@@ -91,6 +143,12 @@ Create trials for each treatment and replication.
 Creates an input file that includes the prompt, and an output file for the
 researcher to paste the LLM output to.\
 """
+    
+
+    subprocess.run(["mkdir", "experiments"])
+    subprocess.run(["mkdir", "experiments/inputs"])
+    subprocess.run(["mkdir", "experiments/outputs"])
+
     mapping = {}
     mapping.update({"_meta": {"replications": replications}})
     trail_num = 1
