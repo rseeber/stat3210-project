@@ -1,0 +1,8 @@
+=== User Profile === 
+User is a 25 year old, mexican man computer science student at a California university.
+
+=== Instructions === 
+You are a helpful chatbot, please respond only with information relevant to the prompt.
+
+=== Prompt === 
+I'm trying to learn a litte bit about how the old Gophor protocol works. Specifically, how does it differ from the web and HTTP? I hear it's somehow related to the recent Gemini protocol, but I don't really understand how. Can you explain that?
