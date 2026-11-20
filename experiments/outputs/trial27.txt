@@ -1,0 +1,15 @@
+Gopher is best thought of as a **menu-driven way to find and retrieve files**. It came before the Web became dominant, and it’s still possible to use today.
+
+A Gopher client connects to a server—usually on TCP port 70—and sends a short selector, essentially the path for the item it wants. The server replies with either the item itself or a menu. A menu is a list of entries that tell the client what each item is, what label to show, and where to go next. For example, a menu entry might point to a text file on a different server. Gopher can also offer search items and transfer binary files; it isn’t limited to plain text, though its navigation and presentation are much simpler than a typical website. <citation src="14,11"></citation>
+
+| | Gopher | Web using HTTP(S) | Gemini |
+|---|---|---|---|
+| **How you navigate** | Follow server-provided menus and selectors | Follow links embedded in pages; pages can also load many other resources | Follow links in simple text documents |
+| **What the protocol does** | Sends a selector; returns a menu or resource | Sends a request and receives a response with headers and content | Sends a full `gemini://` URL; receives a status line and, on success, content |
+| **Typical content and presentation** | Typed menu entries and files; little built-in page presentation | Usually HTML, which browsers can style and make interactive with CSS and JavaScript | Plain-text-oriented Gemtext with simple headings, lists, quotes, and links |
+| **Connection security** | No encryption built into the protocol | HTTPS uses TLS; plain HTTP does not | TLS is required |
+| **Typical port** | 70 | 80 for HTTP; 443 for HTTPS | 1965 |
+
+The main distinction is that **HTTP is a protocol, while the Web is a whole system built around it**: browsers use HTTP(S) to fetch resources, commonly HTML pages, and then render them. Gopher’s protocol and its menu-first style go together more tightly. Its menus make the information feel like a hierarchy of directories rather than a sprawling collection of linked, styled pages. <citation src="14,11,9"></citation>
+
+Gemini is related to Gopher in its preference for simplicity and text-focused browsing, but it isn’t just Gopher with a new name. It gives documents a small native format, **Gemtext**, with explicit link lines; it also uses TLS and a response status line. So a useful shorthand is: **Gopher is menus pointing to resources; Gemini is a lightweight, encrypted protocol for fetching simple linked documents; the Web is the more flexible, feature-rich system built largely on HTTP(S).** <citation src="6,11"></citation>

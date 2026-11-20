@@ -1,0 +1,13 @@
+Gopher is best thought of as a **menu-driven document system**. The client asks a server for an item; the server may return a menu of more items, a text document, or other data. Its design was meant to make browsing feel like moving through a simple directory tree. The original protocol is described in RFC 1436 and commonly uses TCP port 70. <citation src="3,13"></citation>
+
+A basic exchange looks like this:
+
+1. The client opens a TCP connection and sends a selector—a short string identifying the requested item—followed by a newline.
+2. The server returns the item. If it’s a menu, each line describes a choice: its type, display label, selector, host, and port.
+3. The client shows those choices as a list of links. Selecting one starts another request, possibly to a different server. <citation src="3,13"></citation>
+
+**Compared with the Web and HTTP:** Gopher’s protocol is much smaller and more menu-oriented. A basic request is essentially a selector, rather than an HTTP request with a method, headers, and other options. Menus carry much of the navigation structure, and an item-type character gives the client a basic hint about what it will fetch. Gopher can serve binary files too, so it isn’t limited to plain text—but it doesn’t have the Web’s general-purpose HTML-and-browser model. HTTP, by contrast, is the protocol browsers use to fetch Web resources, while HTML is one format those resources can contain. <citation src="3,13"></citation>
+
+**How Gemini relates:** Gemini is a newer, minimalist protocol inspired in part by Gopher. It keeps the lightweight, document-focused approach, but has its own request/response format and a built-in text format called Gemtext, which supports headings, lists, preformatted text, and explicit link lines. Gemini also requires TLS encryption; classic Gopher does not. So Gemini is a relative in spirit—not simply Gopher with a new name. <citation src="6"></citation>
+
+A quick mental picture: **Gopher is like choosing files and folders from a networked menu; Gemini is like reading linked, lightly formatted text through a secure, deliberately simple protocol; the Web is a broader system built around HTTP and formats such as HTML.**

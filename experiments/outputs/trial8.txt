@@ -1,0 +1,15 @@
+Think of **Gopher as a text-first, menu-driven way to browse files**, from before the Web became dominant. A Gopher client connects to a server—usually on TCP port 70—and asks for a “selector,” a short identifier for a menu or item. The server returns a menu of choices or the requested file. Menus can link to items on other servers, creating a browsable network, but the basic experience is more like following folders and lists than opening richly formatted pages. <citation src="3"></citation>
+
+| | Gopher | Web with HTTP | Gemini |
+|---|---|---|---|
+| **How you navigate** | Choose items from server-provided menus | Follow links in web pages | Follow links in simple text documents |
+| **A typical request** | Send an item’s selector | Send an HTTP request with a method, headers, and resource path | Send the full `gemini://` URL as one line |
+| **What comes back** | A menu or a file | A response with status, headers, and content | A status line, then the content |
+| **Typical content and features** | Often plain text, but can serve other file types | Broad and extensible: HTML, images, scripts, forms, and more | Mostly text in a lightweight format called Gemtext |
+| **Connection security** | The original protocol doesn’t require TLS | HTTP can be used with TLS as HTTPS | TLS is built in |
+
+HTTP is more than a way to fetch a page: it has a flexible request-and-response format, standard methods such as `GET` and `POST`, headers, and ways to support many kinds of services and content. HTML is a separate format commonly used for web pages; CSS and JavaScript add presentation and interactivity. <citation src="11,12"></citation>
+
+**Gemini borrows Gopher’s spirit, not its exact protocol.** It aims for a small, text-centered browsing experience, but uses URLs and linked documents rather than Gopher’s menu-and-selector model. It also adds mandatory TLS and Gemtext, a simple line-based format for headings, lists, quotes, and links. A Gemini browser can’t directly speak Gopher any more than a web browser can; they’re separate protocols, though a proxy can translate between them. <citation src="6,16"></citation>
+
+In short: **Gopher is like navigating a network of simple menus; the Web is a flexible platform for documents and applications; Gemini is a newer, deliberately simpler linked-document space inspired in part by Gopher.**

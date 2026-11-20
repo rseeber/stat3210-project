@@ -1,0 +1,13 @@
+“Gopher” is the correct spelling. A useful distinction: **the Web is the information system people browse; HTTP is the main protocol it uses to fetch resources.** Gopher was another way to organize and retrieve information on the Internet.
+
+| | Gopher | HTTP and the Web | Gemini |
+|---|---|---|---|
+| **How you browse** | Follow menus, often arranged like folders in a file system | Follow links in web pages; pages can be richly formatted and interactive | Follow simple links in mostly text-based documents |
+| **Basic exchange** | The client sends a resource selector; the server returns a menu or item | The client sends a request with a method and headers; the server replies with a status and headers, then content | The client sends a URL; the server replies with a short status line and content |
+| **Design feel** | Very lightweight and menu-oriented | Flexible and feature-rich | Minimalist, but with some modern features |
+
+In Gopher, a menu entry tells the client the item’s type, its label, and where to find it—including the server and port. Selecting an entry sends its selector to the server, which returns the menu or resource. The original protocol commonly used TCP port 70. <citation src="13"></citation>
+
+HTTP, by contrast, is built around requests and responses with methods, headers, and status codes. The Web uses HTTP to deliver HTML and other content, which browsers can display with styling, images, scripts, and interactive features. Gopher can serve binary files too, but its core browsing model is a hierarchy of menus rather than richly formatted pages. <citation src="1"></citation>
+
+**Gemini is inspired by Gopher, not simply a new version of it.** It keeps the idea of a small, text-focused space, while adding modern features such as required TLS encryption and Gemtext, a simple format that supports links. So you can think of it as borrowing Gopher’s minimalist spirit while using a different, newer protocol. <citation src="6"></citation>

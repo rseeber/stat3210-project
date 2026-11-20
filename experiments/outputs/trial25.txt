@@ -1,0 +1,32 @@
+Think of **Gopher as a networked directory**, **HTTP as a flexible way to request and serve web resources**, and **Gemini as a deliberately small, text-oriented system inspired by both**.
+
+### How Gopher works
+
+A Gopher server presents a menu of items: other menus, text files, searches, and files of other types. When you choose an item, your client connects to the server and sends a short **selector** identifying it. The server returns the menu or content, then closes the connection. Menu entries include a label, an item type, and where to fetch the item. <citation src="9"></citation>
+
+For example, a menu might show:
+
+```text
+1Computer Science    /cs/    example.org    70
+0Course notes        /cs/notes.txt    example.org    70
+```
+
+Here, `1` indicates another menu and `0` a text file. The user experience is mainly following these menus, a bit like navigating folders. Gopher can carry binary files too; it just doesn’t provide the web’s rich, styled-page experience by default. <citation src="6"></citation>
+
+### How that differs from the web and HTTP
+
+The **web** is the whole system of browsers, servers, links, and content formats. **HTTP** is the protocol browsers commonly use to request web resources. A typical HTTP exchange has a request method and headers, then a response with a status and headers; the content might be HTML, an image, or something else. HTML can link to other pages and, together with CSS and JavaScript, support elaborate layouts and interactions.
+
+Classic Gopher is simpler and more menu-oriented: the client asks for a selector, and the server returns the requested menu or item. It doesn’t have HTTP’s general-purpose headers and method system, or a standard rich-page format like HTML. Gopher menus can link to items on other servers, but browsing tends to feel more hierarchical than the web’s interconnected pages. <citation src="9"></citation>
+
+### Where Gemini fits
+
+Gemini borrows Gopher’s attraction to a simpler, text-focused browsing experience, but updates the mechanics. It uses **TLS encryption**, sends a full `gemini://` URL as the request, and returns a status line followed by content. Its native format, **Gemtext**, supports simple headings, lists, quotes, and links—so links can appear within a document rather than only as menu choices. <citation src="11,16"></citation>
+
+A useful shorthand:
+
+- **Gopher:** “Show me this menu or item.”
+- **HTTP:** “Request this resource, using a flexible protocol and rich web formats.”
+- **Gemini:** “Request this URL securely, with a small protocol and simple text pages.”
+
+Gemini is therefore **Gopher-inspired, not just Gopher with encryption**: it keeps the lightweight ethos but provides URL-based requests, TLS, and a basic hypertext format. It was designed as another option alongside Gopher and the web, not as a replacement for either. <citation src="16"></citation>

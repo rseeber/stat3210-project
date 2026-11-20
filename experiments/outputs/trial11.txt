@@ -1,0 +1,16 @@
+Gopher is an older Internet protocol for finding and retrieving documents. Think of it as a **network of linked menus**, rather than a collection of visually designed pages. It was described in RFC 1436 in 1993, based on work that began at the University of Minnesota in 1991. <citation src="7"></citation>
+
+A typical Gopher session works like this: your client connects to a server and sends a short line identifying the item it wants. The server replies with either a menu or the item’s contents. A menu lists choices—often another menu or a document—and tells the client where each choice lives. The client presents that structure so you can browse from one menu to the next. <citation src="7"></citation>
+
+The main differences from the Web and HTTP are:
+
+- **Navigation:** Gopher’s usual model is a hierarchy of menus. On the Web, HTML pages can link directly to one another in any pattern.
+- **Page format:** Gopher menus use a simple, line-based format. HTTP is the communication protocol; web pages commonly use HTML, which supports richer formatting and interactive features.
+- **How responses are described:** Gopher menu entries include a type that helps the client interpret the item. HTTP responses use status codes and headers to describe what the server is returning.
+- **Protocol complexity:** Gopher’s basic request-and-response exchange is very small. HTTP has developed into a much broader protocol with features for different kinds of requests and responses.
+
+Gopher can carry more than plain text—its menu items can point to other kinds of resources too—but its core browsing experience is simpler and more menu-oriented than the modern Web. <citation src="7"></citation>
+
+**Gemini is inspired by Gopher’s simplicity, but it isn’t just Gopher with a new name.** It’s a newer protocol designed for lightweight browsing. Like Gopher, it favors a stripped-down reading experience; unlike basic Gopher, it uses TLS for connections and has its own text format, Gemtext, with a small set of formatting and link features. Gemini also has request and response lines with status information, making it more structured in that respect. Its creators describe it as a separate option, not a replacement for either Gopher or HTTP. <citation src="1"></citation>
+
+In short: **Gopher is menu-driven document retrieval; HTTP is the foundation for the flexible Web; Gemini is a modern, deliberately limited alternative that borrows some of Gopher’s minimalist spirit.** <citation src="7,1"></citation>

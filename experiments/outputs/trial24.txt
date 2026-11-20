@@ -1,0 +1,14 @@
+Gopher is best thought of as a **menu-driven document service**. Instead of opening a graphical page, you browse lists of items—rather like navigating folders—and choose a document or another menu. The original protocol was designed for distributed document search and retrieval, and its 1993 specification describes a simple client-server exchange over TCP. <citation src="3"></citation>
+
+A basic Gopher exchange looks roughly like this:
+
+```text
+Client → server: 0/docs\r\n
+Server → client: [the requested document]
+```
+
+The client sends a *selector* identifying what it wants. A menu response is a list of entries; each entry identifies an item and where to retrieve it. That’s much simpler than HTTP’s richer request-and-response format, which supports methods such as `GET` and `POST`, status codes, headers, and metadata about the content. <citation src="3,14"></citation>
+
+**How that differs from the Web:** Gopher mainly gives you menus and files. The Web uses HTTP to transfer resources, but the broader Web also includes formats and technologies such as HTML, CSS, and JavaScript. So HTTP and Gopher are protocols; the Web is a larger ecosystem built around HTTP. <citation src="3,14"></citation>
+
+**How Gemini relates:** Gemini is inspired by Gopher’s lightweight, text-first approach, but it isn’t just Gopher with a new name. It uses full `gemini://` URLs, requires TLS, and has a response line with a status code and metadata. Its usual content format, Gemtext, provides simple headings and links. In short: **Gopher is the earlier menu-oriented system; Gemini borrows its minimalist spirit while defining a different protocol and document format.** <citation src="6"></citation>

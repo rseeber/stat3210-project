@@ -1,0 +1,15 @@
+Think of **Gopher as a networked filing cabinet**: you browse menus, choose an item, and the server sends it back. The web is more like a network of documents that can link freely to one another and be rendered in many ways.
+
+A typical Gopher exchange is very simple:
+
+1. The client connects to a Gopher server, usually on TCP port 70.
+2. It sends a short **selector**—a string identifying the requested menu or item.
+3. The server returns a menu or the requested file, then closes the connection.
+
+A Gopher menu is a list of entries with a label, an item type, and where to find the item: its selector, server, and port. Selecting an entry takes the client to another menu, a text file, a search, or another kind of resource. Gopher could serve binary files too; it wasn’t strictly limited to plain text. <citation src="9"></citation>
+
+Compared with the web, Gopher’s main difference is its **menu-first structure**. HTTP is the protocol browsers use to request and receive web resources; HTML is a common format for those resources. HTTP supports richer request and response features, while Gopher’s basic interaction is more like “ask for this menu or item.” The web’s links can connect documents in a less hierarchical way, and HTML can provide rich formatting and interactive features. <citation src="1,9"></citation>
+
+**Gemini borrows Gopher’s small, text-focused spirit, but it isn’t just Gopher with a new name.** A Gemini client requests a full `gemini://` URL, and the server replies with a status code and a content type, followed by the content. Gemini uses TLS encryption and its own lightweight document format, **Gemtext**, which supports simple headings, lists, quotes, and links. So Gopher mostly presents navigation as menus; Gemini presents linked text documents, with a little more structure and modern security built into the protocol. <citation src="16"></citation>
+
+In short: **Gopher is menus and selectors; Gemini is a deliberately minimal, encrypted protocol for linked text; HTTP is the more general-purpose foundation of today’s web.**
