@@ -1,0 +1,13 @@
+“Gopher” is probably the protocol you mean. A useful shorthand is: Gopher is a menu-driven document service; HTTP is the flexible foundation of the Web; Gemini is a newer, deliberately simpler protocol that borrows ideas from Gopher.
+
+In Gopher, a server usually presents a menu of items—documents, submenus, searches, or files. Each menu entry tells the client what the item is and where to fetch it. When you choose one, the client sends the server a simple selector string; the server returns the item. Classic Gopher typically uses TCP port 70. RFC Editor
+
+HTTP works differently. A browser sends a structured request—often with a method such as GET, headers, and sometimes a body—and the server replies with a status code, headers, and the requested content. HTTP can carry HTML, images, scripts, video, and many other kinds of data. A modern web page may involve many requests for its separate resources. Mozilla
+
+Here’s a rough analogy: Gopher is like browsing a file cabinet through labeled menus; the Web is like a flexible publishing system where documents can link and combine many kinds of content. Gopher does support files beyond plain text, but its navigation and basic exchanges are much simpler. Its classic protocol doesn’t have HTTP’s rich request-and-response headers.
+
+Gemini takes inspiration from Gopher’s simplicity, but it is not just Gopher with a new name. It uses gemini:// addresses, requires TLS encryption, and has its own lightweight text format, Gemtext. Gemtext supports headings, lists, quotes, and links, with links on their own lines rather than embedded in paragraphs. Gemini also returns a small status line with each response. 
+Wikipedia
+1
+
+So the family resemblance is in the aim: keep browsing focused on text and links, with fewer features to implement and render. Gemini updates that approach with encryption and a native hypertext format, while remaining a separate “space” from the Web. Wikipedia

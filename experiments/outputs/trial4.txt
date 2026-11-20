@@ -1,0 +1,11 @@
+“Gopher” is probably the protocol you mean. It was an early Internet way to browse and fetch documents, built around menus rather than the web’s page-and-hyperlink model.
+
+A Gopher client connects to a server—usually on TCP port 70—and sends a short selector naming the item it wants. The server replies with a menu, a document, or another file. Menu entries tell the client what kind of item it is and where to fetch it, including the server and selector. So browsing often feels like opening a series of directory-like menus. Gopher can serve binary files too; it just doesn’t center the experience on richly formatted pages. RFC Editor
+
+The web uses HTTP to request resources, but HTTP itself isn’t the page format: a server might send HTML, an image, or other data. Compared with Gopher’s simple selector request and relatively minimal response, HTTP has methods such as GET and POST, status codes, and headers that describe the request and response. HTML then provides the web’s linked-document format, while browsers can also process things like CSS and JavaScript. 
+Mozilla
+1
+
+Gemini borrows Gopher’s minimalist, text-first spirit, but it is a separate, newer protocol—not an updated Gopher client or a version of HTTP. Gemini uses encrypted TLS connections by default, sends a URL in its request, and has its own linked text format called Gemtext. That format supports headings, lists, preformatted text, and links, so Gemini is a bit more expressive than traditional Gopher while staying far simpler than the web. Wikipedia
+
+A rough mental picture: Gopher is like navigating a text-based file catalog; the web is a flexible system for delivering many kinds of interactive documents; Gemini is a deliberately small, secure space for linked text.

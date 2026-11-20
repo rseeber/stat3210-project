@@ -1,0 +1,9 @@
+Gopher is a text-oriented protocol from the early 1990s for finding and retrieving documents. The easiest way to picture it is as a network of simple, linked menus: you browse folders of items, then select an item to retrieve a document, image, or other resource. Its original specification describes a client sending a line called a selector to a server, which returns the requested item or a menu. RFC Editor
+
+The Web and HTTP work differently. HTTP is the request-and-response protocol underneath the Web: a client requests a resource identified by a URL, and the server returns it with headers describing things like its type and length. Web pages can link freely to one another and may combine text, images, scripts, and interactive elements. Gopher’s classic experience is more like navigating a directory tree; its menu entries identify items and where to fetch them, but it doesn’t have the Web’s general-purpose page format and rich browser environment. 
+Wikipedia
+1
+
+Gemini is a newer, separate protocol—not a version of Gopher. It shares Gopher’s appeal to simplicity and text-focused browsing, and its lightweight text/gemini format draws inspiration from Gopher menus and Markdown. But Gemini uses TLS for encrypted connections and presents pages called capsules, with links written directly in the text. So it’s reasonable to think of Gemini as Gopher-like in spirit, rather than as Gopher with a new name. 
+haxx.se
+1

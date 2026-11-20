@@ -1,0 +1,22 @@
+Gopher is an early Internet protocol for browsing and retrieving files. Think of it as a text-based directory tree: a Gopher client asks a server for a particular “selector” (a resource path), and the server returns either a menu of choices or the requested file. Menu entries include a display label, selector, server name, port, and a one-character type code—such as 1 for another menu or 0 for a text file. The usual port is 70. 
+Wikipedia
+1
+
+How it differs from the Web and HTTP: Gopher navigation is usually menu-driven and hierarchical. The Web is built around URLs and hyperlinks, and HTTP is the protocol browsers use to request resources; web pages are commonly HTML, with CSS, JavaScript, images, and other media. Gopher can serve different kinds of files too, but its protocol and menu format are much simpler and don’t define a rich page-rendering system like the Web’s. 
+Wikipedia
+1
+
+A simplified Gopher exchange looks like this:
+text
+
+Client → server:    /                 [request a menu]
+Server → client:    1About<TAB>/about<TAB>example.org<TAB>70
+                    0Read me<TAB>/readme<TAB>example.org<TAB>70
+
+The client displays those entries; choosing one sends its selector to the relevant server.
+
+How Gemini relates: Gemini is a newer, independent protocol inspired in part by Gopher’s minimalist, text-focused approach. Like Gopher, it aims for a small, straightforward browsing experience rather than the Web’s full feature set. But Gemini has its own protocol and format: it uses gemini:// addresses, sends a URL as the request, returns a status line plus content, and uses a lightweight text format called Gemtext. Gemini also requires TLS encryption; traditional Gopher connections generally aren’t encrypted by the protocol itself. 
+Y Combinator
+1
+
+In short: Gopher is a simple menu-and-file system; Gemini borrows the minimalist spirit but uses a different, newer design with encryption and its own text format.

@@ -1,0 +1,16 @@
+You mean Gopher. The key difference is how each system organizes and presents information:
+	Gopher	The Web (HTTP)	Gemini
+Browsing model	Usually a hierarchy of text menus, like navigating folders	Pages can link freely to one another	Text documents can link to one another
+Typical content	Plain text, menus, and downloadable files; menu entries identify item types	Any kind of content, commonly HTML, images, video, and interactive pages	Lightweight text in a format called Gemtext, plus other files
+Basic exchange	Client sends a short selector; server returns the selected menu or item	Client sends an HTTP request; server responds with status information, headers, and content	Client sends a URL; server responds with a status line and content
+Security and complexity	Very small, simple protocol; the original protocol doesn’t require TLS	Broad, extensible protocol; HTTPS adds TLS	Designed to stay simple, but requires TLS
+
+Gopher was designed for browsing a structured collection of Internet resources. A menu entry might say “Library catalog” and point to another menu on the same server—or to an item on a different server. When you choose it, the client sends the server a selector identifying that item. Gopher can carry more than text, but it doesn’t use a page format like HTML to define rich, styled pages. The original protocol is described in RFC 1436. RFC Editor
+
+The Web took a more document-centered approach: pages can contain links that jump around freely, and HTML can describe richly formatted content. HTTP is the protocol that transfers those resources; it defines request and response conventions such as methods, status codes, and metadata. 
+HTG
+1
+
+Gemini borrows Gopher’s simplicity, but it isn’t just “Gopher with encryption.” It uses TLS for connections and has Gemtext, a lightweight document format with headings, lists, and explicit link lines. That makes Gemini’s pages more like minimal hypertext documents, while classic Gopher navigation is primarily built from menus. Gemini also has its own URL-based request and status-line response format. Wikipedia
+
+In short: Gopher feels like browsing a network of menus and files; Gemini feels like reading a deliberately plain, linked-text web; HTTP supports a much broader, more extensible Web.

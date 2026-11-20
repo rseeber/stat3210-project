@@ -1,0 +1,16 @@
+You’re thinking of Gopher—it’s an older Internet protocol built around browsing menus, rather than the web’s pages and links.
+
+A Gopher server typically presents a plain-text list of choices. Each menu item identifies a resource—such as another menu, a text file, or a downloadable file—and tells the client where to fetch it. You move through a site by selecting menu items, like navigating folders. Gopher was created in 1991 and became popular before the Web overtook it. 
+Wikipedia
+1
+
+The main contrast is:
+
+    Gopher: Menu-driven and hierarchical. Its menus are simple, and the protocol has a small set of item types. It can serve more than text, but it doesn’t provide the rich, styled, interactive pages people associate with modern websites.
+    Web and HTTP: HTTP is the protocol browsers use to request and receive web resources. The Web’s HTML pages can link freely to other pages, including across sites, and can include images, styling, scripts, and interactive features.
+
+So Gopher is less like “a simpler kind of HTML page” and more like a network of menus pointing to files and documents.
+
+Gemini is related in spirit, not a newer version of Gopher. It’s a newer, lightweight protocol inspired in part by Gopher’s simplicity, but it uses TLS encryption and serves a modestly formatted text format called Gemtext, with links. That puts it between Gopher’s plain menus and the feature-rich Web: simple to browse and publish, but deliberately limited compared with ordinary websites. 
+Y Combinator
+1

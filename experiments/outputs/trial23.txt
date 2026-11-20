@@ -1,0 +1,9 @@
+Gopher is a pre-web system for finding and retrieving files on the internet. Think of it as a menu-driven library: you connect to a server, get a plain-text list of entries, and select one by sending its item type and path back to the server. A Gopher client then retrieves that item—often a text document, but potentially a different file type. Gopher’s menus can link to other servers, so the collection of menus and files forms a browsable space. Its original specification dates to 1991. falsetrue.io
+
+The main difference from the web is how content and navigation are organized. Gopher servers present menus of items; the web presents documents that can contain links inline, and HTTP transfers those resources. Web pages can combine text, images, styles, and scripts, while classic Gopher menus and text documents are much plainer. Gopher is not limited to text, though: it can serve other kinds of files too.
+
+At a high level, the exchange is simple: a Gopher client asks a server for a selected item, and the server returns it. HTTP also uses a client–server request and response, but HTTP grew into a much broader system with richer headers, methods, and web technologies layered around it. Traditional Gopher connections also don’t provide encryption by default, unlike HTTPS.
+
+Gemini is related in spirit, not because it’s a newer version of Gopher. It was inspired by Gopher’s emphasis on simplicity, but uses a more document-focused model: a Gemini document can contain links, and its lightweight format is called Gemtext. Gemini also requires TLS encryption. So, loosely: Gopher is menu-and-file browsing; Gemini is minimalist linked documents; the web is a more flexible, feature-rich document system. 
+Wikipedia
+1
